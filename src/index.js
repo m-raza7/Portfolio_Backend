@@ -24,7 +24,7 @@ app.use("/api/contact", contactRouter);
 
 app.use(errorHandler);
 
-mongoose
+await mongoose
   .connect(MONGODB_URI)
   .then(() => {
     console.log("✅ MongoDB connected");
