@@ -9,8 +9,10 @@ import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/portfolio";
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:5173";
+// const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/portfolio";
+const MONGODB_URI = process.env.MONGODB_URI;
+// const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:5173";
+const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN;
 
 app.use(helmet());
 app.use(cors({ origin: CLIENT_ORIGIN, credentials: true }));
@@ -21,6 +23,8 @@ app.get("/api/health", (_req, res) => res.json({ ok: true, time: new Date().toIS
 app.use("/api/contact", contactRouter);
 
 app.use(errorHandler);
+
+// mongoose.connect(MONGODB_URI);
 
 mongoose
   .connect(MONGODB_URI)
