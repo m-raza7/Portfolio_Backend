@@ -8,7 +8,7 @@ import contactRouter from "./routes/contact.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
-// const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 // const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/portfolio";
 const MONGODB_URI = process.env.MONGODB_URI;
 // const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:5173";
@@ -32,6 +32,6 @@ await mongoose
   })
   .catch((err) => {
     console.error("❌ MongoDB connection failed:", err.message);
-    process.exit(1);
+    // process.exit(1);
   });
 export default app;
